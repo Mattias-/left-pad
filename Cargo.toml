@@ -1,0 +1,7 @@
+[package]
+name = "left-pad"
+version = "0.1.0"
+authors = ["mattias"]
+edition = "2018"
+
+[dependencies]

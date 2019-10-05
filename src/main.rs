@@ -86,7 +86,7 @@ fn parse_headers(hs2: &str) -> Headers {
 }
 
 fn parse_body(body: &str) -> &str {
-    return body.trim_right_matches('\0');
+    return body.trim_end_matches('\0');
 }
 
 fn parse_request(request: &str) -> Request {
@@ -127,6 +127,7 @@ fn handle_connection(mut stream: TcpStream) {
     let i: usize = x[1].parse().unwrap();
 
     let res = Response::new()
+        .status(HTTPStatus::OK)
         .body(&left_pad(String::from(request.body), i, x[2]))
         .build();
 
